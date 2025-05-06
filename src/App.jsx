@@ -96,7 +96,7 @@ export default function SchedulerDemo() {
     <div className={`w-full h-screen bg-gray-50 flex items-center justify-center p-4 relative transition-opacity duration-1000 ${fadeOut ? 'opacity-0' : 'opacity-100'}`}>
       <div className="flex flex-col lg:flex-row gap-6 w-full max-w-6xl">
         <div className="bg-white rounded-2xl shadow-xl p-6 w-full lg:w-1/2">
-          <h2 className="text-lg font-bold mb-4">Clinic Scheduling Dashboard</h2>
+          <h2 className="text-lg font-bold mb-4">Naveon Care Clinic Scheduling Dashboard</h2>
           <table className="w-full text-left text-sm">
             <thead>
               <tr className="text-gray-500">
