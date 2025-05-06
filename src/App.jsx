@@ -67,6 +67,16 @@ export default function SchedulerDemo() {
     }
   }, [messages]);
 
+  useEffect(() => {
+    const audio = document.getElementById('bg-music');
+    audio.volume = 0.3;
+    const enableAudio = () => {
+      audio?.play().catch(() => {});
+      document.removeEventListener('click', enableAudio);
+    };
+    document.addEventListener('click', enableAudio);
+  }, []);
+
   const handleRescheduleClick = () => {
     setTimeout(() => {
       setMessages(prev => [...prev, {
@@ -94,6 +104,10 @@ export default function SchedulerDemo() {
 
   return (
     <div className={`w-full h-screen bg-gray-50 flex items-center justify-center p-4 relative transition-opacity duration-1000 ${fadeOut ? 'opacity-0' : 'opacity-100'}`}>
+      <audio autoPlay loop id="bg-music">
+        <source src="/celebrate-your-wins.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
       <div className="flex flex-col lg:flex-row gap-6 w-full max-w-6xl">
         <div className="bg-white rounded-2xl shadow-xl p-6 w-full lg:w-1/2">
           <h2 className="text-lg font-bold mb-4">Naveon Care Clinic Scheduling Dashboard</h2>
@@ -144,7 +158,7 @@ export default function SchedulerDemo() {
                   >
                     Book New Time
                     {showFinger.visible && showFinger.target === 'book' && (
-                      <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full mt-1 text-3xl animate-bounce">👆</span>
+                      <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full mt-1 text-5xl animate-bounce">👆</span>
                     )}
                   </button>
                 </div>
@@ -159,7 +173,7 @@ export default function SchedulerDemo() {
                       {showFinger.visible && showFinger.target === 'friday' && (
                         <>
                           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full mt-1 animate-ping w-4 h-4 rounded-full bg-blue-300 opacity-50"></div>
-                          <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full mt-1 text-3xl animate-bounce">👆</span>
+                          <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full mt-1 text-5xl animate-bounce">👆</span>
                         </>
                       )}
                     </button>
