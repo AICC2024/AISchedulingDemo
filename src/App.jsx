@@ -103,87 +103,102 @@ export default function SchedulerDemo() {
   };
 
   return (
-    <div className={`w-full h-screen bg-gray-50 flex items-center justify-center p-4 relative transition-opacity duration-1000 ${fadeOut ? 'opacity-0' : 'opacity-100'}`}>
-      <audio autoPlay loop id="bg-music">
-        <source src="/celebrate-your-wins.mp3" type="audio/mpeg" />
-        Your browser does not support the audio element.
-      </audio>
-      <div className="flex flex-col lg:flex-row gap-6 w-full max-w-6xl">
-        <div className="bg-white rounded-2xl shadow-xl p-6 w-full lg:w-1/2">
-          <h2 className="text-lg font-bold mb-4">Naveon Care Clinic Scheduling Dashboard</h2>
-          <table className="w-full text-left text-sm">
-            <thead>
-              <tr className="text-gray-500">
-                <th className="pb-2">Patient</th>
-                <th className="pb-2">Status</th>
-                <th className="pb-2">Time</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className={dashboardStatus === 'Rescheduled' ? "bg-green-100 transition duration-1000" : "bg-red-100 transition duration-1000"}>
-                <td className="font-medium">Maria Lopez</td>
-                <td className={dashboardStatus === 'Rescheduled' ? "text-green-600 font-semibold" : "text-red-600 font-semibold"}>{dashboardStatus}</td>
-                <td>{dashboardStatus === 'Rescheduled' ? appointment : '—'}</td>
-              </tr>
-              <tr>
-                <td>James Lee</td>
-                <td className="text-black font-semibold">Confirmed</td>
-                <td>Wednesday at 3:00 PM</td>
-              </tr>
-            </tbody>
-          </table>
+    <>
+      <header className="w-full text-center bg-blue-100 py-4 shadow">
+        <h1 className="text-2xl font-semibold text-blue-900 animate-fade-in">
+          Rebook More. Worry Less. Let AI Handle It.
+        </h1>
+      </header>
+      <div className="w-full overflow-hidden bg-white border-t border-b border-gray-200">
+        <div className="whitespace-nowrap animate-marquee text-blue-800 font-medium text-lg py-2 px-4">
+          <span className="mx-6">Integrates with all EHRs</span>
+          <span className="mx-6">Decrease no-shows by 20%</span>
+          <span className="mx-6">Improve patient satisfaction</span>
+          <span className="mx-6">AI-powered rebooking</span>
         </div>
+      </div>
+      <div className={`w-full h-screen bg-gray-50 flex items-center justify-center p-4 relative transition-opacity duration-1000 ${fadeOut ? 'opacity-0' : 'opacity-100'}`}>
+        <audio autoPlay loop id="bg-music">
+          <source src="/celebrate-your-wins.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div className="flex flex-col lg:flex-row gap-6 w-full max-w-6xl">
+          <div className="bg-white rounded-2xl shadow-xl p-6 w-full lg:w-1/2">
+            <h2 className="text-lg font-bold mb-4">Naveon Care Clinic Scheduling Dashboard</h2>
+            <table className="w-full text-left text-sm">
+              <thead>
+                <tr className="text-gray-500">
+                  <th className="pb-2">Patient</th>
+                  <th className="pb-2">Status</th>
+                  <th className="pb-2">Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className={dashboardStatus === 'Rescheduled' ? "bg-green-100 transition duration-1000" : "bg-red-100 transition duration-1000"}>
+                  <td className="font-medium">Maria Lopez</td>
+                  <td className={dashboardStatus === 'Rescheduled' ? "text-green-600 font-semibold" : "text-red-600 font-semibold"}>{dashboardStatus}</td>
+                  <td>{dashboardStatus === 'Rescheduled' ? appointment : '—'}</td>
+                </tr>
+                <tr>
+                  <td>James Lee</td>
+                  <td className="text-black font-semibold">Confirmed</td>
+                  <td>Wednesday at 3:00 PM</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-        {showChatUI && (
-          <div className="bg-white rounded-2xl shadow-xl p-6 w-full lg:w-1/2 flex flex-col animate-fade-in relative">
-            <p className="text-gray-600 mb-2">From: <strong>Naveon Care Clinic</strong></p>
-            <div className="space-y-4 overflow-y-auto">
-              {messages.map(msg => (
-                <div key={msg.id} className="text-center animate-fade-in">
-                  <p className="text-xs text-gray-400 mb-1">{msg.timestamp}</p>
-                  <div className="flex justify-start">
-                    <div className="bg-gray-200 text-black px-4 py-2 rounded-2xl max-w-xs shadow text-left leading-relaxed">
-                      {msg.text}
+          {showChatUI && (
+            <div className="bg-white rounded-2xl shadow-xl p-6 w-full lg:w-1/2 flex flex-col animate-fade-in relative">
+              <p className="text-gray-600 mb-2">From: <strong>Naveon Care Clinic</strong></p>
+              <div className="space-y-4 overflow-y-auto">
+                {messages.map(msg => (
+                  <div key={msg.id} className="text-center animate-fade-in">
+                    <p className="text-xs text-gray-400 mb-1">{msg.timestamp}</p>
+                    <div className="flex justify-start">
+                      <div className="bg-gray-200 text-black px-4 py-2 rounded-2xl max-w-xs shadow text-left leading-relaxed">
+                        {msg.text}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
 
-              {messages.find(m => m.id === 1) && messages.length === 1 && (
-                <div className="text-center mt-2 relative">
-                  <button
-                    id="book"
-                    onClick={handleRescheduleClick}
-                    className="relative bg-green-600 text-white font-bold py-2 px-4 rounded-xl hover:bg-green-700"
-                  >
-                    Book New Time
-                    {showFinger.visible && showFinger.target === 'book' && (
-                      <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full mt-1 text-5xl animate-bounce">👆</span>
-                    )}
-                  </button>
-                </div>
-              )}
-
-              {messages.find(m => m.id === 2) && !messages.find(m => m.id === 3) && (
-                <div className="text-center space-y-2 relative">
-                  <button id="thursday" onClick={() => handleTimeSelect('Thursday at 10:30 AM')} className="w-full py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700">Thursday at 10:30 AM</button>
-                  <div className="relative">
-                    <button id="friday" onClick={() => handleTimeSelect('Friday at 2:00 PM')} className="relative w-full py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700">
-                      Friday at 2:00 PM
-                      {showFinger.visible && showFinger.target === 'friday' && (
-                        <>
-                          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full mt-1 animate-ping w-4 h-4 rounded-full bg-blue-300 opacity-50"></div>
-                          <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full mt-1 text-5xl animate-bounce">👆</span>
-                        </>
+                {messages.find(m => m.id === 1) && messages.length === 1 && (
+                  <div className="text-center mt-2 relative">
+                    <button
+                      id="book"
+                      onClick={handleRescheduleClick}
+                      className="relative bg-green-600 text-white font-bold py-2 px-4 rounded-xl hover:bg-green-700"
+                    >
+                      Book New Time
+                      {showFinger.visible && showFinger.target === 'book' && (
+                        <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full mt-1 text-5xl animate-bounce">👆</span>
                       )}
                     </button>
                   </div>
-                </div>
-              )}
+                )}
+
+                {messages.find(m => m.id === 2) && !messages.find(m => m.id === 3) && (
+                  <div className="text-center space-y-2 relative">
+                    <button id="thursday" onClick={() => handleTimeSelect('Thursday at 10:30 AM')} className="w-full py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700">Thursday at 10:30 AM</button>
+                    <div className="relative">
+                      <button id="friday" onClick={() => handleTimeSelect('Friday at 2:00 PM')} className="relative w-full py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700">
+                        Friday at 2:00 PM
+                        {showFinger.visible && showFinger.target === 'friday' && (
+                          <>
+                            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full mt-1 animate-ping w-4 h-4 rounded-full bg-blue-300 opacity-50"></div>
+                            <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full mt-1 text-5xl animate-bounce">👆</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
