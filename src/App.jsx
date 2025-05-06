@@ -111,7 +111,7 @@ export default function SchedulerDemo() {
       </header>
       <div className="w-full overflow-hidden bg-white border-t border-b border-gray-200">
         <div className="whitespace-nowrap animate-marquee text-blue-800 font-medium text-lg py-2 px-4">
-          <span className="mx-6">Integrates with all EHRs</span>
+          <span className="mx-6">Integrates to EHR scheduling apps</span>
           <span className="mx-6">Decrease no-shows by 20%</span>
           <span className="mx-6">Improve patient satisfaction</span>
           <span className="mx-6">AI-powered rebooking</span>
