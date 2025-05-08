@@ -115,6 +115,9 @@ export default function SchedulerDemo() {
           <span className="mx-6">Decrease no-shows by 20%</span>
           <span className="mx-6">Improve patient satisfaction</span>
           <span className="mx-6">AI-powered rebooking</span>
+          <span className="mx-6">Multilingual</span>
+          <span className="mx-6">AI interacts via SMS, email, phone</span>
+          <span className="mx-6">For cancellations, no-shows, waitlist</span>
         </div>
       </div>
       <div className={`w-full h-screen bg-gray-50 flex items-center justify-center p-4 relative transition-opacity duration-1000 ${fadeOut ? 'opacity-0' : 'opacity-100'}`}>
