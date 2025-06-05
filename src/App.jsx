@@ -60,7 +60,7 @@ export default function SchedulerDemo() {
         setShowFinger({ target: 'friday', visible: true });
         setTimeout(() => {
           setShowFinger({ target: null, visible: false });
-          handleTimeSelect('Friday at 2:00 PM');
+          handleTimeSelect('Thursday at 10:30 AM');
         }, 1000);
       }, 2500);
       return () => clearTimeout(selectTimeout);
@@ -140,7 +140,7 @@ export default function SchedulerDemo() {
                 <tr className={dashboardStatus === 'Rescheduled' ? "bg-green-100 transition duration-1000" : "bg-red-100 transition duration-1000"}>
                   <td className="font-medium">Maria Lopez</td>
                   <td className={dashboardStatus === 'Rescheduled' ? "text-green-600 font-semibold" : "text-red-600 font-semibold"}>{dashboardStatus}</td>
-                  <td>{dashboardStatus === 'Rescheduled' ? appointment : '—'}</td>
+                  <td>{dashboardStatus === 'Rescheduled' ? 'Thursday at 10:30 AM' : '—'}</td>
                 </tr>
                 <tr>
                   <td>James Lee</td>
@@ -168,31 +168,38 @@ export default function SchedulerDemo() {
 
                 {messages.find(m => m.id === 1) && messages.length === 1 && (
                   <div className="text-center mt-2 relative">
-                    <button
-                      id="book"
-                      onClick={handleRescheduleClick}
-                      className="relative bg-green-600 text-white font-bold py-2 px-4 rounded-xl hover:bg-green-700"
-                    >
-                      Book New Time
+                    <div className="relative flex justify-center">
                       {showFinger.visible && showFinger.target === 'book' && (
-                        <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full mt-1 text-5xl animate-bounce">👆</span>
+                        <img
+                          src="/tap-finger.svg"
+                          alt="Tap"
+                          className="absolute -top-1 w-16 animate-bounce"
+                        />
                       )}
-                    </button>
+                      <button
+                        id="book"
+                        onClick={handleRescheduleClick}
+                        className="bg-green-600 text-white font-bold py-2 px-4 rounded-xl hover:bg-green-700"
+                      >
+                        Book New Time
+                      </button>
+                    </div>
                   </div>
                 )}
 
                 {messages.find(m => m.id === 2) && !messages.find(m => m.id === 3) && (
                   <div className="text-center space-y-2 relative">
                     <button id="thursday" onClick={() => handleTimeSelect('Thursday at 10:30 AM')} className="w-full py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700">Thursday at 10:30 AM</button>
-                    <div className="relative">
-                      <button id="friday" onClick={() => handleTimeSelect('Friday at 2:00 PM')} className="relative w-full py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700">
+                    <div className="relative flex justify-center">
+                      {showFinger.visible && showFinger.target === 'friday' && (
+                        <img
+                          src="/tap-finger.svg"
+                          alt="Tap"
+                          className="absolute -top-10 w-16 animate-bounce"
+                        />
+                      )}
+                      <button id="friday" onClick={() => handleTimeSelect('Friday at 2:00 PM')} className="w-full py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700">
                         Friday at 2:00 PM
-                        {showFinger.visible && showFinger.target === 'friday' && (
-                          <>
-                            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full mt-1 animate-ping w-4 h-4 rounded-full bg-blue-300 opacity-50"></div>
-                            <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full mt-1 text-5xl animate-bounce">👆</span>
-                          </>
-                        )}
                       </button>
                     </div>
                   </div>
