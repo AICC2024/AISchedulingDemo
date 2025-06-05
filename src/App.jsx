@@ -48,7 +48,7 @@ export default function SchedulerDemo() {
         setTimeout(() => {
           setShowFinger({ target: null, visible: false });
           handleRescheduleClick();
-        }, 1000);
+        }, 2000);
       }, 3000);
       return () => clearTimeout(clickTimeout);
     }
@@ -61,7 +61,7 @@ export default function SchedulerDemo() {
         setTimeout(() => {
           setShowFinger({ target: null, visible: false });
           handleTimeSelect('Thursday at 10:30 AM');
-        }, 1000);
+        }, 2000);
       }, 2500);
       return () => clearTimeout(selectTimeout);
     }
@@ -173,7 +173,7 @@ export default function SchedulerDemo() {
                         <img
                           src="/tap-finger.svg"
                           alt="Tap"
-                          className="absolute -top-1 w-16 animate-bounce"
+                          className="absolute -top-1 w-16 animate-fade-in"
                         />
                       )}
                       <button
@@ -195,7 +195,7 @@ export default function SchedulerDemo() {
                         <img
                           src="/tap-finger.svg"
                           alt="Tap"
-                          className="absolute -top-10 w-16 animate-bounce"
+                          className="absolute -top-10 w-16 animate-fade-in"
                         />
                       )}
                       <button id="friday" onClick={() => handleTimeSelect('Friday at 2:00 PM')} className="w-full py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700">
