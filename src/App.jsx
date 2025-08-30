@@ -109,17 +109,17 @@ export default function SchedulerDemo() {
         Your browser does not support the audio element.
       </audio>
       <header className="w-full text-center bg-blue-100 py-6 shadow">
-        <h1 className="text-3xl font-bold text-blue-900 animate-fade-in">
-          Rebook More. Worry Less. Let AI Handle It.
-        </h1>
         <a
           href="https://meetings.hubspot.com/paul-minton"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-800 text-base font-medium mt-2 block hover:underline"
+          className="text-blue-800 text-3xl font-bold mb-2 block hover:underline animate-fade-in"
         >
           📅 Book a live demo with Naveon + Paul Minton
         </a>
+        <h1 className="text-2xl font-semibold text-blue-900 animate-fade-in">
+          Rebook More. Worry Less. Let AI Handle It.
+        </h1>
       </header>
       <div className="w-full overflow-hidden bg-white border-t border-b border-gray-200">
         <div className="whitespace-nowrap animate-marquee text-blue-800 font-medium text-lg py-2 px-4">
